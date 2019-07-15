@@ -8,7 +8,12 @@ import SEO from "../components/seo"
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <h1>Venezuela Freedom Walk Version 0. 1. 0.</h1>
+    <h1>🇻🇪 🚶 - Working on prototype
+    🇻🇪 🚶 - Working on prototype
+    🇻🇪 🚶 - Working on prototype
+    🇻🇪 🚶 - Working on prototype
+    🇻🇪 🚶 - Working on prototype
+    </h1>
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
       <Image />
     </div>
