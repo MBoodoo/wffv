@@ -8,11 +8,8 @@ import SEO from "../components/seo"
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    <h1></h1>
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-    <div>curtis made a commit</div>
     </div>
-    <Link to="/page-2/">Go to page 2</Link>
   </Layout>
 )
 
