@@ -1,4 +1,7 @@
 // import { ButtonList } from "personal-lib"
+// Replace all "width" props with "flex"
+// Socials "implements" the type "ButtonGroup"
+
 import React from "react";
 import styled from "styled-components"
 
@@ -10,18 +13,38 @@ import { font1, font2, font3, _golden } from "../theme.js"
 
 
 // THIS WILL BE SELECTED FROM GRAPHQL -->
-const pages = ["about", "contact", "donate", "gallery", "screenings"]
 
-////////////////////////////////
-// For some reason gatsby's link styles are overwriting everything 
-// so these are inline styles to inject:
-
-const linkStyles = { textDecoration: `none`, color: `${_golden}` }
+const socials = [
+    {
+        type: "twitter",
+        icon: "",
+        link: "#"
+    },
+    {
+        type: "instagram",
+        icon: "",
+        link: "#"
+    },
+    {
+        type: "facebook",
+        icon: "",
+        link: "#"
+    },
+    {
+        type: "gofundme",
+        icon: "",
+        link: "#"
+    },
+    {
+        type: "youtube",
+        icon: "",
+        link: "#"
+    },
+]
 
 // See this link --> https://www.framer.com/api/motion/animation/#variants
 
 const variants = {
-
      init: { 
         opacity: 0,
         y: 20
@@ -32,48 +55,55 @@ const variants = {
         transition: {
             type: "spring",
             stiffness: 20,
-            staggerChildren: .45
+            staggerChildren: .45,
+            staggerDirection: -1
         } 
     }
 }
 
 /////////////////////////////////
 
-export default ({ sticky }) => {
+export default () => {
     // Looping over pages (eventually selected from GraphQL) 
     // and mapping their Links to Buttons
 
-    let links = pages.map((item, idx) => ( 
+    let links = socials.map(({ icon, link }, idx) => ( 
         <Button variants={variants} key={idx}>
-            <Link style={{...linkStyles}} to={`/${item}/`}>{item}</Link>
+            <a href={link}>{icon}</a>
         </Button>
         ) 
     )
 
-    return  <NavContainer initial="init" animate="mounted" variants={variants}>
+    return  <Container initial="init" animate="mounted" variants={variants}>
                 { links }
-            </NavContainer>
+            </Container>
 }
 
-const NavContainer = styled(motion.div)`
+const Container = styled(motion.div)`
     display: flex;
     justify-content: space-between;
-    padding: 1em;  
-    height: 3em;
-    flex: 1;
+    padding: 1em .6em;  
+    flex: .3;
     margin: ${({ spacing }) => spacing || ".2em 2em .2em 1em"};
 `
 
 const Button = styled(motion.div)`
-    flex: 1;
+    flex: 1/5;
     font-size: 18px;
 
     text-decoration: none;
     font-family: ${font1};
  
-
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     color: ${_golden};
+
+    border: 1px solid black;
+
     text-align: center;
+
+    padding: .3em;
+    line-height: 1em;
+
+    background: ${_golden}
 `
