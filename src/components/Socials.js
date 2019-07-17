@@ -18,7 +18,7 @@ const socials = [
     {
         type: "twitter",
         icon: "",
-        link: "#"
+        link: "https://twitter.com"
     },
     {
         type: "instagram",

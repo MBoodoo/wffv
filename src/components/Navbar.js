@@ -10,7 +10,7 @@ import { font1, font2, font3, _golden } from "../theme.js"
 
 
 // THIS WILL BE SELECTED FROM GRAPHQL -->
-const pages = ["about", "contact", "donate", "gallery", "screenings"]
+const pages = ["abou", "contact", "donate", "gallery", "screenings"]
 
 ////////////////////////////////
 // For some reason gatsby's link styles are overwriting everything 
