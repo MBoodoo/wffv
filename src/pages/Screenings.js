@@ -1,3 +1,4 @@
+// ScreenList "implements" ScrollAccordion
 import React from "react"
 import { Link } from "gatsby"
 
