@@ -39,7 +39,7 @@ const Layout = ({ children }) => {
       
         <Main>{ children }</Main>
         <footer>
-          © {new Date().getFullYear()}, Built with
+          © {new Date().getFullYear()} Venezuela Walk of Freedom
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
