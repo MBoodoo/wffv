@@ -42,11 +42,11 @@ const VideoContainer = styled(motion.div)`
     width: 80vw;
     height: 20em;
 
-    border: 2px solid ${_darkPurp};
+    
     display: flex;
 
     & > * {
-        border: 3px solid ${_darkOrange};
+        
     }
 
 `
