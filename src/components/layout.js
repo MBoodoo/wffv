@@ -6,12 +6,15 @@
  */
 
 import React from "react"
+import styled from "styled-components"
+import { motion } from "framer-motion"
+
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-import ButtonGroup from "./ButtonGroup"
-import Navbar from "./Navbar"
-import Socials from "./Socials"
+import ButtonGroup from "./_Nav/ButtonGroup"
+import Navbar from "./_Nav/Navbar"
+import Socials from "./_Nav/Socials"
 
 import "./layout.css"
 
@@ -34,7 +37,7 @@ const Layout = ({ children }) => {
 
       </ButtonGroup>
       
-        <main style={{width: `100%`, display: `flex`, justifyContent: `center`}}>{ children }</main>
+        <Main>{ children }</Main>
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
@@ -43,6 +46,14 @@ const Layout = ({ children }) => {
     </>
   )
 }
+
+const Main = styled(motion.main)`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+`
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

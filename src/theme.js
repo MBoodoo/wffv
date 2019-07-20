@@ -15,7 +15,9 @@ export const _lightGreen = '#C4D6B0'
 // IMAGE VARIABLES
 export const _homeImage = "flavia-carpio.jpg"
 export const _homeImageURL = "https://images.unsplash.com/photo-1533699224246-6dc3b3ed3304?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80"
+///
+
+//  CUSTOMIZABLE ATTRIBUTES 
 
 
-
-// INJECTABLE COMPONENT STYLES
+// INJECTABLE COMPONENT STYLES (injected using the "rest and spread operators": {..., ...newStyles})
