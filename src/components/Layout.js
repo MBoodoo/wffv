@@ -7,7 +7,7 @@
 
 import React from "react"
 import styled from "styled-components"
-import { motion } from "framer-motion"
+import { motion, useViewportScroll, useMotionValue, useTransform} from "framer-motion"
 
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
@@ -17,6 +17,7 @@ import Navbar from "./_Nav/Navbar"
 import Socials from "./_Nav/Socials"
 
 import "./layout.css"
+import { _darkOrange, _darkPurp } from "../theme"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -28,6 +29,8 @@ const Layout = ({ children }) => {
       }
     }
   `)
+  const { scrollY, scrollYProgress } = useViewportScroll()
+  const background = useTransform(scrollYProgress, [0, .4, .65, 1], [_darkOrange, _darkPurp, _darkPurp, _darkPurp])
 
   return (
     <>
@@ -37,21 +40,27 @@ const Layout = ({ children }) => {
 
       </ButtonGroup>
       
-        <Main>{ children }</Main>
-        <footer>
+        <Main style={{background}}>{ children }</Main>
+        <Footer style={{background}}>
           © {new Date().getFullYear()} Venezuela Walk of Freedom
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        </Footer>
     </>
   )
 }
 
+const Footer = styled(motion.footer)`
+
+`
+
 const Main = styled(motion.main)`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+
 
 `
 

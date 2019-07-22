@@ -42,6 +42,6 @@ const ButtonGroup = styled(motion.div)`
     position: fixed;
 
     width: 100vw;
-
+    z-index: 10;
 
 `
