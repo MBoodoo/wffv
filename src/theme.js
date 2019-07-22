@@ -6,10 +6,10 @@ export const font2 = "Spectral"
 export const font3 = "Varela"
 
 // COLOR PALETTE
-export const _golden = '#FCDE9C'
+export const _yellow = '#F5B700'
 export const _orange = '#FFA552'
 export const _darkOrange = '#BA5624'
-export const _darkPurp = '#381D2A'
+export const _blue = '#0A2463'
 export const _lightGreen = '#C4D6B0'
 
 // IMAGE VARIABLES

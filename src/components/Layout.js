@@ -17,20 +17,12 @@ import Navbar from "./_Nav/Navbar"
 import Socials from "./_Nav/Socials"
 
 import "./layout.css"
-import { _darkOrange, _darkPurp } from "../theme"
+import { _darkOrange, _blue, _yellow } from "../theme"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+
   const { scrollY, scrollYProgress } = useViewportScroll()
-  const background = useTransform(scrollYProgress, [0, .4, .65, 1], [_darkOrange, _darkPurp, _darkPurp, _darkPurp])
+  const background = useTransform(scrollYProgress, [0, .4, .65, 1], [_yellow, _yellow, _blue, _blue])
 
   return (
     <>
@@ -67,5 +59,6 @@ const Main = styled(motion.main)`
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
+
 
 export default Layout

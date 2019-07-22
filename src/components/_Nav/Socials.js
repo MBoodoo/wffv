@@ -8,7 +8,7 @@ import styled from "styled-components"
 import { motion } from "framer-motion"
 import { Link } from "gatsby"
 
-import { font1, font2, font3, _golden } from "../../theme.js"
+import { font1, font2, font3, _yellow } from "../../theme.js"
 /////////////////////////////////////////
 
 
@@ -96,7 +96,7 @@ const Button = styled(motion.div)`
  
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: ${_golden};
+    color: ${_yellow};
 
     border: 1px solid black;
 
@@ -105,5 +105,5 @@ const Button = styled(motion.div)`
     padding: .3em;
     line-height: 1em;
 
-    background: ${_golden}
+    background: ${_yellow}
 `

@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { motion } from "framer-motion"
 import { Link } from "gatsby"
 
-import { font1, font2, font3, _golden } from "../../theme"
+import { font1, font2, font3, _yellow } from "../../theme"
 /////////////////////////////////////////
 
 
@@ -16,7 +16,7 @@ const pages = ["about", "contact", "donate", "gallery", "screenings"]
 // For some reason gatsby's link styles are overwriting everything 
 // so these are inline styles to inject:
 
-const linkStyles = { textDecoration: `none`, color: `${_golden}` }
+const linkStyles = { textDecoration: `none`, color: `${_yellow}` }
 
 // See this link --> https://www.framer.com/api/motion/animation/#variants
 
@@ -74,6 +74,6 @@ const Button = styled(motion.div)`
 
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: ${_golden};
+    color: ${_yellow};
     text-align: center;
 `

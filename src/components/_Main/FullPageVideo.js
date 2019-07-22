@@ -6,7 +6,7 @@ import styled from "styled-components"
 import { motion, useMotionValue, useViewportScroll, useTransform } from "framer-motion"
 import useMedia from "../../effects/useMedia"
 
-import { _homeImageURL, _golden, _darkPurp, _darkOrange} from "../../theme"
+import { _homeImageURL, _yellow, _blue, _darkOrange} from "../../theme"
 
 
 import trailerURL from "../../images/VZLA_Trailer.mp4"
@@ -37,7 +37,7 @@ export default () => {
     const y = useTransform(scrollY, val => val < 450 ? val * -1 : val - 900)
     const scale = useTransform(scrollYProgress, [0, .3, .45], [1, 1.25, 1.35]) || 1
 
-    const background = useTransform(scrollYProgress, [0, .4, .65, 1], [_darkOrange, _darkPurp, _darkPurp, _darkPurp])
+    //const background = useTransform(scrollYProgress, [0, .4, .65, 1], [_darkOrange, _blue, _blue, _blue])
     //const position = useTransform(scrollYProgress, [0, .4, .65, 1], ["relative", "relative", "fixed", "relative"])
 
 
@@ -48,7 +48,7 @@ export default () => {
     // SIDEBAR AND NAVBAR REPLACED BY NAVICON ON BRREAKPOINTS
 
     return (
-        <VideoContainer style={{background}}>
+        <VideoContainer style={{background: "transparent"}}>
             <Sidebar style={{ y }}>
 
             </Sidebar>
@@ -87,7 +87,7 @@ const VideoContainer = styled(motion.div)`
 const InfoArea = styled(motion.div)`
     width: 15em;
     height: 15em;
-    border: 2px solid ${_golden};
+    border: 2px solid ${_yellow};
     text-align: center;
     line-height: 3em;
 
@@ -100,7 +100,7 @@ const InfoArea = styled(motion.div)`
 const Sidebar = styled(motion.div)`
     width: 15em;
     height: 15em;
-    border: 2px solid ${_golden};
+    border: 2px solid ${_yellow};
     text-align: center;
     line-height: 3em;
 

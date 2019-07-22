@@ -3,7 +3,7 @@ import React, { useEffect } from "react"
 import styled from "styled-components"
 import { motion, useMotionValue, useViewportScroll, useTransform, useCycle } from "framer-motion"
 
-import { _homeImageURL, _golden } from "../../theme"
+import { _homeImageURL, _yellow } from "../../theme"
 //import { backgroundType } from "personal library"
 
 import { useStaticQuery, graphql } from "gatsby"
@@ -70,7 +70,7 @@ export default () => {
     // See this link --> https://gatsby.dev/gatsby-image
     const lazyLoadImage = <Img fluid={ data.placeholderImage.childImageSharp.fluid } />
 
-    const image = <BgContainer animate={{gridGap: [0, 0, "2em", "2em", "2em", 0]}} transition={{duration: 3, times: 3}} >
+    const image = <BgContainer animate={{gridGap: [0, 0, "2em", "2em", "2em", 0]}} transition={{loop: Infinity}} >
                     {imageSegments}
                   </BgContainer>
 
@@ -83,7 +83,7 @@ const BackgroundImg = styled(motion.div)`
   position: relative;
   height: 100%;
   width: 100%;
-  background-color: ${_golden};
+  background-color: ${_yellow};
 
   background-image: url(${_homeImageURL});
   background-repeat: no-repeat;
