@@ -70,7 +70,7 @@ export default () => {
     // See this link --> https://gatsby.dev/gatsby-image
     const lazyLoadImage = <Img fluid={ data.placeholderImage.childImageSharp.fluid } />
 
-    const image = <BgContainer animate={{gridGap: [0, 0, "2em", "2em", "2em", 0]}} transition={{loop: Infinity}} >
+    const image = <BgContainer animate={{gridGap: [0, 0, "2em", "2em", "2em", 0]}} transition={{}} >
                     {imageSegments}
                   </BgContainer>
 
@@ -83,7 +83,6 @@ const BackgroundImg = styled(motion.div)`
   position: relative;
   height: 100%;
   width: 100%;
-  background-color: ${_yellow};
 
   background-image: url(${_homeImageURL});
   background-repeat: no-repeat;
@@ -93,7 +92,7 @@ const BackgroundImg = styled(motion.div)`
 `;
 
 const BgContainer = styled(motion.div)`
-  position: realtive;
+  position: relative;
   //transform: translateY(-5em);
 
   z-index: 1;
