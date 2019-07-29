@@ -1,6 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css?family=Kavivanar|Spectral|Varela&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -10,7 +9,7 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 300vh;
+
 }
 article,
 aside,
@@ -624,4 +623,3 @@ pre tt:after {
     font-size: 100%;
   }
 }
-

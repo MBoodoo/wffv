@@ -5,7 +5,7 @@ import React from "react"
 
 import styled from "styled-components"
 import { motion, useMotionValue, useTransform  } from "framer-motion"
-import { _homeImageURL, _yellow, } from "../../theme"
+import { _homeImageURL, _yellow, _lavender } from "../../theme"
 import { useMousePos } from "../../effects/useMousePos"
 
 import { useStaticQuery, graphql } from "gatsby"
@@ -37,11 +37,13 @@ const ButtonGroup = styled(motion.div)`
     justify-content: ${({ justify }) => justify || "space-between"};
     flex: 1;
 
-    height: ${({ height }) => height || "4em"};
-   // background: linear-gradient(to bottom, rgba(56,29,42, 1) 0%, rgba(56,29,42,0) 100%);
+    height: ${({ height }) => height || "3em"};
+    background: ${_lavender};
     position: fixed;
 
     width: 100vw;
-    z-index: 10;
+    z-index: 99;
+
+   
 
 `

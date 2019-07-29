@@ -5,18 +5,18 @@ import styled from "styled-components"
 import { motion } from "framer-motion"
 import { Link } from "gatsby"
 
-import { font1, font2, font3, _yellow } from "../../theme"
+import { font1, font2, font3, _yellow, _lavender } from "../../theme"
 /////////////////////////////////////////
 
 
 // THIS WILL BE SELECTED FROM GRAPHQL -->
-const pages = ["about", "contact", "donate", "gallery", "screenings"]
+const pages = ["Watch Trailer", "Our Team", "Screenings", "Contact Us"]
 
 ////////////////////////////////
 // For some reason gatsby's link styles are overwriting everything 
 // so these are inline styles to inject:
 
-const linkStyles = { textDecoration: `none`, color: `${_yellow}` }
+const linkStyles = { textDecoration: `none`, color: `black` }
 
 // See this link --> https://www.framer.com/api/motion/animation/#variants
 
@@ -57,23 +57,26 @@ export default ({ sticky }) => {
 
 const NavContainer = styled(motion.div)`
     display: flex;
-    justify-content: space-between;
-    padding: 1em;  
+    justify-content: space-around;
+    padding: .5em;  
+    width: 5em;
     height: 3em;
     flex: 1;
     margin: ${({ spacing }) => spacing || ".2em 2em .2em 1em"};
+
+
 `
 
 const Button = styled(motion.div)`
     flex: 1;
-    font-size: 18px;
+    font-size: 20px;
 
     text-decoration: none;
-    font-family: ${font1};
+    font-family: ${font3};
  
-
-    text-transform: uppercase;
+    //text-transform: uppercase;
     letter-spacing: 2px;
     color: ${_yellow};
     text-align: center;
+    line-height: 30px; 
 `

@@ -5,6 +5,7 @@ import React, { useRef, useState, useEffect } from "react"
 import styled from "styled-components"
 import { motion, useMotionValue, useViewportScroll, useTransform } from "framer-motion"
 import useMedia from "../../effects/useMedia"
+import useLockBodyScroll from "../../effects/useLockBodyScroll"
 
 import { _homeImageURL, _yellow, _blue, _darkOrange} from "../../theme"
 
@@ -29,17 +30,20 @@ const variants = {
 /////////////////////////////////// WILL ADD OGG File type
 
 export default () => {
-
+    const [lock, setLock] = useState(0)
     const marginTop = useMedia([], [], 0)
     const { scrollY, scrollYProgress } = useViewportScroll()
 
+    useEffect(() => { scrollYProgress.onChange(val => val >= .5 ? setLock(true) : setLock(false))})
+    useLockBodyScroll(lock)
+
     // Add scroll constraint for next sections too
-    const y = useTransform(scrollY, val => val < 450 ? val * -1 : val - 900)
+    const y = useTransform(scrollY, val => val < 450 ? -val : val > 800 ? -100 - (val - 800) : val - 900)
     const scale = useTransform(scrollYProgress, [0, .3, .45], [1, 1.25, 1.35]) || 1
+    
 
     //const background = useTransform(scrollYProgress, [0, .4, .65, 1], [_darkOrange, _blue, _blue, _blue])
     //const position = useTransform(scrollYProgress, [0, .4, .65, 1], ["relative", "relative", "fixed", "relative"])
-
 
    
     const video = useRef()
@@ -57,7 +61,7 @@ export default () => {
 
             </InfoArea>
 
-            <motion.video style={{ y, scale, width: "60%" }} ref={video} autoPlay="true" >
+            <motion.video style={{ y, scale, width: "52%", height: `75%`}} ref={video} autoPlay="true" >
                 <source src={trailerURL} type="video/mp4" />
             </motion.video>
 
@@ -69,20 +73,17 @@ export default () => {
 const VideoContainer = styled(motion.div)`
     z-index: 20;
     width: 100vw;
-    height: 20em;
+    height: 30em;
     transform: translateY(20em);
 
     
     display: flex;
     justify-content: center;
    
-    
+    scroll-snap-align: center;
 
   
-    & > * {
-        
-    }
-
+   
 `
 const InfoArea = styled(motion.div)`
     width: 15em;
