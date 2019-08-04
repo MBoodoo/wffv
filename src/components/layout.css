@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Alegreya+Sans:900|Merriweather|Open+Sans&display=swap');
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -7,8 +7,11 @@ html {
 }
 body {
   margin: 0;
+  padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: auto;
+
 
 }
 article,

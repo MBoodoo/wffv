@@ -38,12 +38,7 @@ const Layout = ({ children }) => {
         <Socials />
       </ButtonGroup>
       
-        <Main style={{background}}>{ children }</Main>
-        <Footer style={{background}}>
-          © {new Date().getFullYear()} Venezuela Walk of Freedom
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </Footer>
+        <FlexContainer style={{background}}>{ children }</FlexContainer>
     </>
   )
 }
@@ -52,20 +47,28 @@ const Footer = styled(motion.footer)`
 
 `
 
-const Main = styled(motion.main)`
-  width: 100%;
-  height: auto;
+const FlexContainer = styled(motion.article)`
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+
   flex-direction: column;
-  justify-content: center;
-  z-index: 1;
 
-  scroll-snap-type: y mandatory;
-  
+  scroll-snap-type: y proximity;
   overflow-y: scroll;
+  scroll-padding-top: 2em;
+  margin-top: 1em;
 
-
-`
+  border: 2px solid black;
+  & > * {
+    scroll-snap-align: start;
+    flex: none;
+    overflow: scroll;
+  }
+`;
 const Logo = styled(motion.img)`
 
  // width: 10em;
@@ -84,8 +87,8 @@ const Logo = styled(motion.img)`
 
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 
-
 `
+
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }

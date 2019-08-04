@@ -10,7 +10,7 @@ import { font1, font2, font3, _yellow, _lavender } from "../../theme"
 
 
 // THIS WILL BE SELECTED FROM GRAPHQL -->
-const pages = ["Watch Trailer", "Our Team", "Screenings", "Contact Us"]
+const pages = ["Watch Trailer", "Our Team", "Contact Us", "Testimonials"]
 
 ////////////////////////////////
 // For some reason gatsby's link styles are overwriting everything 
@@ -45,7 +45,7 @@ export default ({ sticky }) => {
 
     let links = pages.map((item, idx) => ( 
         <Button variants={variants} key={idx}>
-            <Link style={{...linkStyles}} to={`/${item}/`}>{item}</Link>
+            <Link style={{...linkStyles}} to={`/#${item.split(' ').join('')}`}>{item}</Link>
         </Button>
         ) 
     )
@@ -64,15 +64,14 @@ const NavContainer = styled(motion.div)`
     flex: 1;
     margin: ${({ spacing }) => spacing || ".2em 2em .2em 1em"};
 
-
 `
 
 const Button = styled(motion.div)`
     flex: 1;
-    font-size: 20px;
+    font-size: 16px;
 
     text-decoration: none;
-    font-family: ${font3};
+    font-family: "Merriweather";
  
     //text-transform: uppercase;
     letter-spacing: 2px;

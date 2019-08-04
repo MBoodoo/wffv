@@ -1,49 +1,47 @@
-// THIS NEEDS TO BE REFACTORED NIGGA
+import React, { useEffect } from "react";
 
-// ""
-import React from "react"
+import styled from "styled-components";
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  useViewportScroll
+} from "framer-motion";
+import { _yellow, _khaki } from "../../theme";
+//import { useMousePos } from "../../effects/useMousePos";
 
-import styled from "styled-components"
-import { motion, useMotionValue, useTransform  } from "framer-motion"
-import { _homeImageURL, _yellow, _lavender } from "../../theme"
-import { useMousePos } from "../../effects/useMousePos"
-
-import { useStaticQuery, graphql } from "gatsby"
+//import { useStaticQuery, graphql } from "gatsby"
 
 ////////////////////////////
 
-const variants = {
-  
-}
+const variants = {};
 
 ///////////////////////////
 
 export default ({ children }) => {
-    
-    const mouse = useMousePos()
-    const y = useMotionValue(true)
-    y.set(mouse.y || y)
-    
-    //const background = useTransform(y, [0, 250], [`linear-gradient(to bottom, rgba(56,29,42,1) 0%, rgba(56,29,42, .3) 100%)`, `linear-gradient(to bottom, rgba(56,29,42, 1) 0%, rgba(56,29,42,0) 100%)`])
+  const { scrollYProgress } = useViewportScroll();
+  const background = useTransform(scrollYProgress, [0, 1], [_yellow, _khaki]);
+  useEffect(() => {
+    scrollYProgress.onChange(val => console.log(val))
+  }, [scrollYProgress])
 
-
-    return <ButtonGroup style={{ background: "transparent" }}>{children}</ButtonGroup>
-}
+  return <ButtonGroup style={{ background }}>{children}</ButtonGroup>;
+};
 
 ///////////////////////////
 
 const ButtonGroup = styled(motion.div)`
-    display: flex;
-    justify-content: ${({ justify }) => justify || "space-between"};
-    flex: 1;
+  display: flex;
+  justify-content: ${({ justify }) => justify || "space-between"};
+  flex: 1;
+  height: 3em;
+  position: fixed;
 
-    height: ${({ height }) => height || "3em"};
-    background: ${_lavender};
-    position: fixed;
+  margin-top: 0;
+  top: 0;
 
-    width: 100vw;
-    z-index: 99;
+  width: 100vw;
+  z-index: 99;
 
-   
-
-`
+  border: 2px solid black;
+`;
