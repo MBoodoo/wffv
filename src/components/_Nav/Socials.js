@@ -4,7 +4,10 @@
 
 import React from "react";
 import styled from "styled-components";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTwitter, faFacebook, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons'
 
+import { _yellow } from "../../theme"
 import { motion } from "framer-motion";
 
 //import { font1, font2, font3, _yellow } from "../../theme.js"
@@ -15,27 +18,22 @@ import { motion } from "framer-motion";
 const socials = [
   {
     type: "twitter",
-    icon: "",
+    icon: faTwitter,
     link: "https://twitter.com"
   },
   {
     type: "instagram",
-    icon: "",
+    icon: faInstagram,
     link: "#"
   },
   {
     type: "facebook",
-    icon: "",
-    link: "#"
-  },
-  {
-    type: "gofundme",
-    icon: "",
+    icon: faFacebook,
     link: "#"
   },
   {
     type: "youtube",
-    icon: "",
+    icon: faYoutube,
     link: "#"
   }
 ];
@@ -67,7 +65,7 @@ export default () => {
 
   let links = socials.map(({ icon, link }, idx) => (
     <Button variants={variants} key={idx}>
-      <a href={link}>{icon}</a>
+      <a href={link}><FontAwesomeIcon icon={icon} /></a>
     </Button>
   ));
 
@@ -84,11 +82,14 @@ const Container = styled(motion.div)`
   padding: 1em 0.6em;
   flex: 0.3;
   margin: ${({ spacing }) => spacing || ".2em 2em .2em 1em"};
+  position: relative;
+  justify-self: end;
+  margin-left: auto;
 `;
 
 const Button = styled(motion.div)`
   flex: 1/5;
-  font-size: 18px;
+  font-size: 26px;
 
   text-decoration: none;
   font-family: "Merriweather";
@@ -97,12 +98,14 @@ const Button = styled(motion.div)`
   letter-spacing: 1px;
   color: yellow;
 
-  border: 1px solid black;
-
   text-align: center;
 
   padding: 0.3em;
-  line-height: 1em;
 
-  background: yellow;
+  place-self: center center;
+
+  a {
+    color: ${_yellow};
+  }
+
 `;

@@ -23,17 +23,20 @@ export default () => {
 };
 
 const Container = styled(motion.section)`
-  height: 50vh;
+  height: calc(5em + 25vh);
   width: 100%;
 
   background: ${_khaki};
 
-  overflow: hidden;
+  overflow: hidden !important;
 
   scroll-snap-align: end;
   padding: 2em;
   display: flex;
+  flex-wrap: wrap;
   position: relative;
+
+ 
   & > * {
     
   }
@@ -44,6 +47,7 @@ const Container = styled(motion.section)`
 const Org = styled(motion.div)`
   flex: 1;
   display: flex;
+  min-width: 20vh;
   justify-content: center;
 
 `

@@ -1,22 +1,28 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+
+import useMedia from "../effects/useMedia"
+
 import { missionText, missionTitle } from "../data";
 import { _khaki } from "../theme"
 /// DATA WILL BE "SELECTED" VIA REDUX OR GRAPHQL!!!!!!!!!
 
 export default () => {
+
+  const width = useMedia(["(max-width: 1050px)"], ["97vw"], "auto")
+  
   return (
     <Container>
       <Info>
-        <Mission>
+        <Mission style={{ width }}>
           <MissionTitle> {missionTitle} </MissionTitle>
           <MissionText> {missionText} </MissionText>
         </Mission>
       </Info>
 
       <Main>
-        <VideoContainer>
+        <VideoContainer style={{ width }} >
           <iframe
             title="Walking for Freedom Venezuela"
             width="100%"
@@ -27,7 +33,7 @@ export default () => {
             allowfullscreen
           />
         </VideoContainer>
-        <Experience>A completely immersive VR experience</Experience>
+        {/*<Experience>A completely immersive VR experience</Experience>*/}
       </Main>
     </Container>
   );
@@ -41,14 +47,20 @@ const Container = styled(motion.section)`
   background: ${_khaki};
 
   display: flex;
+  flex-wrap: wrap;
+  & > * {
+    min-width: 27em;
+  }
 
   // max-height: 45em;
+
 `;
 
 const Info = styled(motion.div)`
   flex: 0.6;
   display: flex;
   flex-direction: column;
+  max-height: 40em;
 
   & > * {
     margin: 1em;
@@ -59,6 +71,13 @@ const Mission = styled(motion.div)`
   display: flex;
   flex-direction: column;
   height: 100%;
+
+  justify-self: center;
+  margin-right: auto;
+ 
+  border: 1px solid black;
+  padding-bottom: 0;
+  position: relative;
 `;
 
 const MissionTitle = styled(motion.h2)`
@@ -101,9 +120,10 @@ const Main = styled(motion.div)`
 
 const VideoContainer = styled(motion.div)`
   flex: 0.7;
-  place-self: start start;
 
   width: 100%;
+  min-height: 20em;
+  max-height: 35em;
 `;
 
 //////////////////////////////////////

@@ -25,7 +25,7 @@ export default ({ children }) => {
     scrollYProgress.onChange(val => console.log(val))
   }, [scrollYProgress])
 
-  return <ButtonGroup style={{ background }}>{children}</ButtonGroup>;
+  return <ButtonGroup>{children}</ButtonGroup>;
 };
 
 ///////////////////////////
@@ -37,11 +37,14 @@ const ButtonGroup = styled(motion.div)`
   height: 3em;
   position: fixed;
 
+  background: transparent !important;
   margin-top: 0;
   top: 0;
 
   width: 100vw;
   z-index: 99;
 
-  border: 2px solid black;
+  & > * {
+    border: 2px solid ${_yellow};
+  }
 `;

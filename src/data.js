@@ -68,21 +68,21 @@ export const members = [
   ];
 export const screenings = [
     {
-      date: "August 3",
+      date: "Aug 3",
       location: "Univ. of Maryland College Park, MD",
       url: "#",
       img: "",
       full: false
     },
     {
-      date: "August 12",
+      date: "Aug 12",
       location: "Morgan State Univ. Baltimore, MD",
       url: "#",
       img: "",
       full: false
     },
     {
-      date: "August 29",
+      date: "Aug 29",
       location: "Bowie State Univ. Bowie, MD",
       url: "#",
       img: "",

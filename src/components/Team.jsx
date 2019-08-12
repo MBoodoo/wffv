@@ -2,16 +2,22 @@ import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { members } from "../data";
+import useMedia from "../effects/useMedia"
+
 import { _blue, _khaki, _yellow} from "../theme"
 
 export default () => {
+
+  const display = useMedia(["(max-width: 450px)"], ["none"], "inline-block")
+  const imgOffset = useMedia(["(max-width: 500px)"], ["15%"], "-16%")
+
   let team = members.map(member => {
     return (
       <MemberContainer>
         <Name>{member.name}</Name>
         <Title>{member.title}</Title>
-        <Preview>{member.preview}</Preview>
-        <Image image={member.img1} />
+        <Preview style={{ display }}>{member.preview}</Preview>
+        <Image style={{right: imgOffset}} image={member.img1} />
       </MemberContainer>
     );
   });
@@ -29,7 +35,7 @@ const GridContainer = styled(motion.section)`
 
   display: grid;
   grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat( auto-fit, minmax(30em, 1fr));
   grid-gap: 2.75em;
 
   overflow-x: auto;
@@ -42,7 +48,9 @@ const MemberContainer = styled(motion.div)`
   padding: 1.8em;
   padding-top: 0;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
+  
   transform: translateX(-1em);
 
   position: relative;
@@ -67,10 +75,11 @@ const Title = styled(motion.h3)`
   color: ${_yellow};
 `;
 const Preview = styled(motion.div)`
-  padding: 1em;
+  padding: 1.5em;
   width: 75%;
+  height: 15em;
   position: absolute;
-  left: -7%;
+  left: 0;
   top: 30%;
 
   font-size: 18px;
@@ -78,6 +87,7 @@ const Preview = styled(motion.div)`
 
   font-family: "Open Sans";
   z-index: 99;
+
 `;
 const Image = styled(motion.div)`
   position: absolute;
@@ -85,6 +95,7 @@ const Image = styled(motion.div)`
   top: -5%;
   width: 60%;
   height: 120%;
+  min-height: 15em;
   margin-right: 1em;
   background: url("${({ image }) => image}");
   background-size: cover;

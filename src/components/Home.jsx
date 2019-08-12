@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useViewportScroll,  } from "framer-motion";
 import { wrap } from "@popmotion/popcorn";
 import useInterval from "../effects/useInterval";
 import { homeImages, screenings } from "../data";
+import { _khaki } from "../theme"
 
 import HomeInfo from "./HomeInfo"
 
@@ -25,8 +26,10 @@ const variants = {
 };
 
 export default () => {
-
- 
+  const { scrollY, scrollYProgress } = useViewportScroll()
+  useEffect(() => {
+    scrollY.onChange(val => console.log(val))
+  }, [scrollY])
 
   useInterval(() => {
     paginate(1);
@@ -70,6 +73,9 @@ export default () => {
           }} */
         />
       </AnimatePresence>
+
+      
+
       <div className="next" onClick={() => paginate(1)}>
         {"‣"}
       </div>
@@ -91,8 +97,6 @@ const Container = styled(motion.section)`
   border: 2px solid black;
 
   overflow: hidden !important;
-
-  // max-height: 45em;
 `;
 
 const Image = styled(motion.img)`

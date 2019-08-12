@@ -2,8 +2,11 @@
 import React from "react";
 import styled from "styled-components"
 
-import { motion } from "framer-motion"
+import { motion, useCycle } from "framer-motion"
 import { Link } from "gatsby"
+import { MenuToggle } from "./MenuToggle"
+
+import useMedia from "../../effects/useMedia"
 
 import { font1, font2, font3, _yellow, _lavender } from "../../theme"
 /////////////////////////////////////////
@@ -42,6 +45,11 @@ const variants = {
 export default ({ sticky }) => {
     // Looping over pages (eventually selected from GraphQL) 
     // and mapping their Links to Buttons
+    const [isOpen, toggleOpen] = useCycle(false, true);
+
+    const navDisplay = useMedia(['(max-width: 1200px'], ['none'], "flex")
+    const isCollapsed = useMedia(['(max-width: 1200px'], [true], false)
+    
 
     let links = pages.map((item, idx) => ( 
         <Button variants={variants} key={idx}>
@@ -50,9 +58,11 @@ export default ({ sticky }) => {
         ) 
     )
 
-    return  <NavContainer initial="init" animate="mounted" variants={variants}>
-                { links }
-            </NavContainer>
+    return  isCollapsed ? 
+                <MenuToggle toggle={() => toggleOpen()} /> :
+                <NavContainer initial="init" animate="mounted" variants={variants} style={{display: navDisplay}}>
+                    { links }
+                </NavContainer>
 }
 
 const NavContainer = styled(motion.div)`
