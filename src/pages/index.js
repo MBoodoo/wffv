@@ -16,11 +16,22 @@ import Footer from "../components/Footer"
 
 const IndexPage = () => {
  
+  useEffect(() => {
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  })
 
   return (
     <Layout>
       <SEO title="Walking For Freedom" />
-      <Home/>
+      <Home />
       <Orgs />
       <Trailer />
       <Team />
