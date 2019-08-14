@@ -2,6 +2,7 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components"
 
+
 const Path = props => (
   <motion.path
     fill="transparent"
@@ -13,7 +14,7 @@ const Path = props => (
 );
 
 export const MenuToggle = ({ toggle }) => (
-  <Button onClick={toggle}>
+  <Button style={{scale: 1.5}} onClick={toggle}>
     <svg width="23" height="23" viewBox="0 0 23 23">
       <Path
         variants={{

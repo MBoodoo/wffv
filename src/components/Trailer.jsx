@@ -74,8 +74,7 @@ const Mission = styled(motion.div)`
 
   justify-self: center;
   margin-right: auto;
- 
-  border: 1px solid black;
+
   padding-bottom: 0;
   position: relative;
 `;

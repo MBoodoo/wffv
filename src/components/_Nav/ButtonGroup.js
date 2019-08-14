@@ -45,6 +45,6 @@ const ButtonGroup = styled(motion.div)`
   z-index: 99;
 
   & > * {
-    border: 2px solid ${_yellow};
+   
   }
 `;

@@ -1,12 +1,14 @@
 // import { ButtonList } from "personal-lib"
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components"
 
 import { motion, useCycle } from "framer-motion"
 import { Link } from "gatsby"
 import { MenuToggle } from "./MenuToggle"
+import Sidebar from "./Sidebar"
 
 import useMedia from "../../effects/useMedia"
+import useDimensions from "../../effects/useDimensions"
 
 import { font1, font2, font3, _yellow, _lavender } from "../../theme"
 /////////////////////////////////////////
@@ -40,12 +42,34 @@ const variants = {
     }
 }
 
+const sidebar = {
+    open: (height = 1000) => ({
+      clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+      transition: {
+        type: "spring",
+        stiffness: 20,
+        restDelta: 2
+      }
+    }),
+    closed: {
+      clipPath: "circle(30px at 40px 40px)",
+      transition: {
+        delay: 0.5,
+        type: "spring",
+        stiffness: 400,
+        damping: 40
+      }
+    }
+}
+  
 /////////////////////////////////
 
-export default ({ sticky }) => {
+export default () => {
     // Looping over pages (eventually selected from GraphQL) 
     // and mapping their Links to Buttons
     const [isOpen, toggleOpen] = useCycle(false, true);
+    const containerRef = useRef(null);
+    const { height } = useDimensions(containerRef);
 
     const navDisplay = useMedia(['(max-width: 1200px'], ['none'], "flex")
     const isCollapsed = useMedia(['(max-width: 1200px'], [true], false)
@@ -59,7 +83,15 @@ export default ({ sticky }) => {
     )
 
     return  isCollapsed ? 
-                <MenuToggle toggle={() => toggleOpen()} /> :
+                <motion.nav
+                    initial={false}
+                    animate={isOpen ? "open" : "closed"}
+                    custom={height}
+                    ref={containerRef}
+                > 
+                    <Background variants={sidebar}/> 
+                    <MenuToggle toggle={() => toggleOpen()} /> 
+                </motion.nav> :
                 <NavContainer initial="init" animate="mounted" variants={variants} style={{display: navDisplay}}>
                     { links }
                 </NavContainer>
@@ -88,4 +120,13 @@ const Button = styled(motion.div)`
     color: ${_yellow};
     text-align: center;
     line-height: 30px; 
+`
+
+const Background = styled(motion.div)`
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    background: #fff;
 `

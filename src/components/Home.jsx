@@ -27,10 +27,7 @@ const variants = {
 
 export default () => {
   const { scrollY, scrollYProgress } = useViewportScroll()
-  useEffect(() => {
-    scrollY.onChange(val => console.log(val))
-  }, [scrollY])
-
+  
   useInterval(() => {
     paginate(1);
   }, 4000);
@@ -93,8 +90,6 @@ const Container = styled(motion.section)`
 
   background: #ff8360;
   position: relative;
-
-  border: 2px solid black;
 
   overflow: hidden !important;
 `;
